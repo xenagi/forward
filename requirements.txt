@@ -1,0 +1,6 @@
+matplotlib
+pandas
+torch
+nvtx
+pytest
+pytest-xdist
