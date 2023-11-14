@@ -16,6 +16,7 @@ import argparse
 
 import torch
 
+import benchmark_layer_norm
 import benchmark_rms_norm
 import utils
 
@@ -25,6 +26,7 @@ def print_scenarios() -> None:
     print(
         ", ".join(
             [
+                "layer_norm",
                 "rms_norm",
             ]
         )
@@ -32,7 +34,9 @@ def print_scenarios() -> None:
 
 
 def run_benchmark(scenario: str, show_plots: bool, dtype: torch.dtype) -> None:
-    if scenario == "rms_norm":
+    if scenario == "layer_norm":
+        benchmark_layer_norm.run(show_plots, dtype)
+    elif scenario == "rms_norm":
         benchmark_rms_norm.run(show_plots, dtype)
     else:
         print_scenarios()
